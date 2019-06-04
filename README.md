@@ -38,3 +38,12 @@ While I wanted to initially include the most funny, cool, and useful reviews fro
 <p align="center">
   <img src="./Images/Distribution of Ratings from Dataset.png" title="Dataset">
 </p>
+
+After taking a look through my dataset, I broke out the reviews by rating and performed a sentiment analysis using VADER (Valence Aware Dictionary and Sentiment Reasoner) to see the distribution of the compound scores amongst the different ratings. As you can see below, the average compound score as per VADER increases as the ratings increase, which is in line with what you would expect as a higher rating indicates a more positive experience.
+
+<p align="center">
+  <u><b> Distribution of VADER Scores </b></u>
+</p> 
+<p align="center">
+  <img src="./Images/Vader.png" title="Vader">
+</p>
