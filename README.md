@@ -1,5 +1,8 @@
 # Yelp-Review-Generator
-Using NLP and Deep Learning, I have created a text generator that types out your review for you which saves you time and let's you get to the 'Elite' status more easily!
+
+## Project Overview
+
+This project uses data scraped from Yelp and through natural language processing and neural networks, I have developed a text generator that will create a review post based on the rating you want to give a particular establishment. The goal of this model is to create a template for you which you can tweak slightly and post the review onto your account. This will save you a lot of time as the model has been trained on thousands of reviews for each star rating, allowing this text generator to capture the general sentiment you may be feeling for the star rating you want to provide.
 
 
 ## Initial EDA
