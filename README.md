@@ -50,3 +50,25 @@ After taking a look through my dataset, I broke out the reviews by rating and pe
 <p align="center">
   <img src="./Images/Vader.png" title="Vader">
 </p>
+
+## Basic Text Generator
+
+Using pure NLP, I want to establish a baseline for my text generator using the 30 most common words found in each star rating. For this, I used spacy to get the lemma of the words in my review dataset and also to tokenize them. Spacy is one of the newest algorithms that offer part of speech tagging for lemmatization and tokenization which is why I ended up using it. Please see below for the text generated for each star rating:
+
+<p align="center">
+  <u><b> Basic Text Generated </b></u>
+</p> 
+<p align="center">
+  <img src="./Images/NLP Text.png" title="Text">
+</p>
+
+To go further with this and see if the text generated matched the sentiment seen in the VADER scores above, I did a sentiment analysis of the text generated. As you can see below, the sentiment of the top 30 words generated from each of the ratings is overwhelmingly positive from a VADER standpoint. You can also see that each rating share many words in common which just means all reviews share a common pattern when they are written out.
+
+<p align="center">
+  <u><b> Sentiment of Text Generated </b></u>
+</p> 
+<p align="center">
+  <img src="./Images/NLP Sentiment.png" title="NLP Sentiment">
+</p>
+
+We will need to develop a more robust model that takes into account the average sentiment that we have seen in the NLP EDA book which is much more representative of the negative views of the lower stars and the positive views of the 4 and 5 star ratings. For this, we will use neural networks.
