@@ -72,3 +72,61 @@ To go further with this and see if the text generated matched the sentiment seen
 </p>
 
 We will need to develop a more robust model that takes into account the average sentiment that we have seen in the NLP EDA book which is much more representative of the negative views of the lower stars and the positive views of the 4 and 5 star ratings. For this, we will use neural networks.
+
+## Basic Neural Networks
+
+The goal of the neural network is to generate a sequence of texts given an input sequence (based on training data). A random number generator will select a sample line from the reviews I use to train my model and will predict the word with the highest probability based on the sequence of texts. This loop will continue until the number of words the end user chooses has been reached. 
+
+<p align="left">
+  <u><b> Cleaning Text </b></u>
+</p>
+
+For reference, please refer to the LSTM Text Generator notebook.
+
+To perform the EDA above, my reviews were in a pandas dataframe along with other information related to each review, such as sentiment, Cool, Helpful, etc. 
+
+I extracted the text of the reviews out from the pandas by converting the text column into a list and thus being able to clean up all the reviews at once by parsing through the list.
+
+This was a highly iterative process because of issues presented by hardware limitations. For my project, I ended up removing punctuation to keep the unique tokens to a low enough count to not blow up my RAM. The reason for this is because "word" and "word." will be considered unique tokens and thus greatly increase the number of unique tokens that I would be basing the architecture of my neural network.
+
+<p align="center">
+  <u><b> Function used to clean text </b></u>
+</p> 
+<p align="center">
+  <img src="./Images/cleaning_reviews.png" title="cleaner">
+</p>
+
+Using the function above, I removed text issues such as '\n\n' which is a symptom of the scrape as well as all punctuation. The number of unique tokens were nearly cut in half after removing them which made it slightly easier to run the models on my personal computer due to issues experienced with Google Colab and Google Cloud Platform.
+
+Please see below for the number of unique tokens with and without punctuation:
+
+<p align="center">
+  <u><b> Function used to clean text </b></u>
+</p> 
+<p align="center">
+  <img src="./Images/punctuation.png" title="punctuation">
+</p>
+
+<p align="center">
+  <u><b> Function used to clean text </b></u>
+</p> 
+<p align="center">
+  <img src="./Images/no_punctuation.png" title="no_punctuation">
+</p>
+
+Once the text was tokenized, I made sequences of 5 + 1 words. So imagine a magnifying glass on words 1-5, then shifting it over to 2-6, 3-7, etc. While most common values are 50 or even 100, because my dataset consists of many individual reviews of varying sizes, I did not believe a larger value size of 50 words would be representative of my population of reviews. A smaller length of 5 would be able to capture the context of each individual review better and thus maintain consistent ideas through the entire sequence of words which would make a sentence. However, I believe my models lacked predictive powerbecause of this limitiation. 
+
+The more inputs you provide (i.e. 50 tokens to predict the 51st token) the more data points you are giving the model to add weights to and better understand the sequence of words. With only 5 words, my initial models really lacked predictive power which resulted in an accuracy score of only 18%. 
+
+<p align="left">
+  <u><b> First Neural Network </b></u>
+</p>
+
+
+
+
+
+
+
+### Issues with Neural Networks
+Running a neural network, I learned the hard way, is very computationally expensive. 
