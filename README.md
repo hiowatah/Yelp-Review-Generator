@@ -119,12 +119,35 @@ Once the text was tokenized, I made sequences of 5 + 1 words. So imagine a magni
 The more inputs you provide (i.e. 50 tokens to predict the 51st token) the more data points you are giving the model to add weights to and better understand the sequence of words. With only 5 words, my initial models really lacked predictive power which resulted in an accuracy score of only 18%. 
 
 <p align="left">
+  <u><b> Why LSTM? </b></u>
+</p>
+
+A typical feedforward network would not be as capable in recognizing patterns in text since the examples just go in one direction until the model makes a decision. Text is similar to time series in that the previous result has an impact on the current input. In simpler terms, words are related to each other and the previous word impacts the next word selected. Therefore, a model needs to be able to be able to recognize the current input as well as the previous inputs to establish the connection between the words. Because RNN's are a type of artificial neural network capable of identifying patterns in sequences of text, it was a natural choice to use for my deep learning model. 
+
+However, I ended up using the LSTM variant of RNN's because text data is susceptible to exploding and vanishing gradients. Since the inputs go through many stages of multiplication (the fourth input weighs in the third, which weighs the second, which weighs the first, etc). So by multiplying an input by a value less than one or greater than one can lead to the gradients, which expresses the change in the weights of the inputs, to be very small (vanishing) or very large (exploding).
+
+LSTM resolves the issue above by keeping the information outside of the normal flow of the recurrent network. 
+
+
+<p align="left">
   <u><b> First Neural Network </b></u>
 </p>
 
+<p align="center">
+  <img src="./Images/first_NN.png" title="first_NN">
+</p>
 
+The picture above represents my first LSTM Neural Network architecture. Due to the blackbox nature of neural networks, I cautioned on the side of making it too simple than too complex. However, the other factor in my decision of these parameters was the execution time. Adding more layers or more memory cells would have made my run time longer and because of the issues I experienced with Google Colab (Insufficient Ram to load the model) and Google Cloud Platform (Could not get jupyter notebook to run on the cloud session), I had to run everything locally on my Macbook Pro. The model above at 25 epochs and a batch size of 256 took over 12 hours to run.
 
+So despite cutting corners and not establishing the best model, the run time of my LSTM model was still half a day. However, because I cut corners with the large batch size and low epoch count, my accuracy only reached 17.77% which lead to a very poor predictor. 
 
+<p align="center">
+  <img src="./Images/First Prediction.png" title="first_prediction">
+</p>
+
+As you can see above, the first 5 words are the seed words and the remainder of the sentence ends up being repetitive nonsense. This is an indication of a poorly trained model. However, with the intense time it took to run this, I decided to come up with an alternative text generator which was much simpler to run and much better than this.
+
+## Enter Markov Chains
 
 
 
