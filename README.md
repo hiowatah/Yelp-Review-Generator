@@ -126,10 +126,7 @@ A typical feedforward network would not be as capable in recognizing patterns in
 
 However, I ended up using the LSTM variant of RNN's because text data is susceptible to exploding and vanishing gradients. Since the inputs go through many stages of multiplication (the fourth input weighs in the third, which weighs the second, which weighs the first, etc). So by multiplying an input by a value less than one or greater than one can lead to the gradients, which expresses the change in the weights of the inputs, to be very small (vanishing) or very large (exploding).
 
-LSTM resolves the issue above by keeping the information outside of the normal flow of the recurrent network. 
-
-
-<p align="left">
+<p align="Center">
   <u><b> First Neural Network </b></u>
 </p>
 
@@ -147,9 +144,20 @@ So despite cutting corners and not establishing the best model, the run time of 
 
 As you can see above, the first 5 words are the seed words and the remainder of the sentence ends up being repetitive nonsense. This is an indication of a poorly trained model. However, with the intense time it took to run this, I decided to come up with an alternative text generator which was much simpler to run and much better than this.
 
-## Enter Markov Chains
+## Enter Markov Chain
 
+Markov Chain is a stochastic model where the probability of each even depends only on the previous event. To put this relating to text generation, a word is only generated based on the previous word. 
 
+To build out this model, I combined all the reviews into one text file and made a dictionary where the keys were the unique words in the file and the values were every single word that occurred directly after the word. So if the word 'happy' appeared three times, the values of this key would be the words that occurred after each instance of 'happy'.
 
+<p align="Center">
+  <u><b> Markov Chain Generator </b></u>
+</p>
+
+<p align="center">
+  <img src="./Images/Markov.png" title="Markov">
+</p>
+
+As you can see in the image above, the text generated 
 ### Issues with Neural Networks
 Running a neural network, I learned the hard way, is very computationally expensive. 
