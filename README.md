@@ -158,6 +158,25 @@ To build out this model, I combined all the reviews into one text file and made 
   <img src="./Images/Markov.png" title="Markov">
 </p>
 
-As you can see in the image above, the text generated 
-### Issues with Neural Networks
-Running a neural network, I learned the hard way, is very computationally expensive. 
+As you can see in the image above, the text generated reads like english. This is because every 2 words will make sense next to each other because each word generated is directly dependent on the word before it. However, just because every 2 words will make sense next to each other, the text generated doesn't make too much sense at a sentence level and definitely not at a review level. 
+
+To see if I could generate a few words that made sense as a generated review, I went back to neural networks and tried making a more robust model while taking into account the time and hardware limitations I had.
+
+## Back to Neural Networks
+Due to issues I faced running Google Cloud Platform and AWS, as well as the memory limitations of Google Colab, I broke up my data set for my 5 star reviews into 12 parts and increased the memory cells from 25 to 100. However, I kept my epochs to 25 and trained my model for all 12 parts. The following is a typical output I get:
+
+<p align="Center">
+  <u><b> More Memory Cell RNN </b></u>
+</p>
+
+<p align="center">
+  <img src="./Images/stronger_model.png" title="stronger_model">
+</p>
+
+Unfortunately, my output was still rubbish. My accuracy achieved was similar to my basic model and I believe this is directly due to my 25 epochs. Both models were limited to just 25 epochs and both had similar results despite my new model having more memory cells. Increasing the epochs and possibly adding another layer to my model may lead to better results, however, doing that is very computationally expensive. 
+
+
+## Conclusion and Next Steps
+This was a very interesting project for me and I think Natural Language Processing is a very cool topic that is also very hard to work with. There is a lot you can analyze with text and no 2 NLP projects will be the same because the stop words may be different for each project. Generating new text is a very difficult task and I understood why a yelp-review generator hasn't been made yet. Trying to train a model to understand patterns of text of thousands of different users is incredibly hard because every person has a different writing style so trying to combine all of them and training basic models that I ran will not yield the results one would hope for. This was a valuable experience in the pitfalls of NN and overly ambitious projects that I did not have the tools to properly run.
+
+Going forward, I would like to see if I can get a more robust model running and see if the output will be something better than a bunch of repeated words. I think there is more that can be done with the markov chain generator I made since the results were promising for such a simple function. I want to make the markov chain look at 2 word combinations and predict the next word or 2 and see if I can get it to generate text at a sentence level. 
