@@ -75,7 +75,7 @@ We will need to develop a more robust model that takes into account the average 
 
 ## Basic Neural Networks
 
-The goal of the neural network is to generate a sequence of texts given an input sequence (based on training data). A random number generator will select a sample line from the reviews I use to train my model and will predict the word with the highest probability based on the sequence of texts. This loop will continue until the number of words the end user chooses has been reached. 
+The goal of the neural network is to generate a sequence of texts given an input sequence (based on training data). A random number generator will select a sample line from the reviews I use to train my model and will predict the word with the highest probability based on the sequence of texts. Since the accuracy won't be 100%, the output won't be a direct copy of the seed text and instead will be a uniquely generated review. This loop will continue until the number of words the end user chooses has been reached. 
 
 <p align="left">
   <u><b> Cleaning Text </b></u>
@@ -138,6 +138,10 @@ The picture above represents my first LSTM Neural Network architecture. Due to t
 
 So despite cutting corners and not establishing the best model, the run time of my LSTM model was still half a day. However, because I cut corners with the large batch size and low epoch count, my accuracy only reached 17.77% which lead to a very poor predictor. 
 
+<p align="Center">
+  <u><b> Basic LSTM Generator </b></u>
+</p>
+
 <p align="center">
   <img src="./Images/First Prediction.png" title="first_prediction">
 </p>
@@ -173,10 +177,46 @@ Due to issues I faced running Google Cloud Platform and AWS, as well as the memo
   <img src="./Images/stronger_model.png" title="stronger_model">
 </p>
 
-Unfortunately, my output was still rubbish. My accuracy achieved was similar to my basic model and I believe this is directly due to my 25 epochs. Both models were limited to just 25 epochs and both had similar results despite my new model having more memory cells. Increasing the epochs and possibly adding another layer to my model may lead to better results, however, doing that is very computationally expensive. 
+Unfortunately, my output was still rubbish. My accuracy achieved was similar to my basic model and I believe this is directly due to my 25 epochs. Both models were limited to just 25 epochs and both had similar results despite my new model having more memory cells. Increasing the epochs and possibly adding another layer to my model may lead to better results. With that hypothesis, I moved onto redefining my model architecture.
+
+<p align="Center">
+  <u><b> Initial LSTM Model </b></u>
+</p>
+
+<p align="center">
+  <img src="./Images/basic.png" title="basic">
+</p>
+
+
+<p align="Center">
+  <u><b> More Memory Cell LSTM Model </b></u>
+</p>
+
+<p align="center">
+  <img src="./Images/More cells.png" title="medium">
+</p>
+
+
+<p align="Center">
+  <u><b> More Layers LSTM Model </b></u>
+</p>
+
+<p align="center">
+  <img src="./Images/more layers.png" title="strongest">
+</p>
+
+In addition to the added layers in my final and best model, I also trained it for 100 epochs instead of the 25. The increased time it took to run this model was worth the effort as the output was much stronger than what the previous 2 LSTM models had. The result was unique words that almost made sense at a sentence level. Unfortunately, the output does not pass the eye test of a real review as it makes no sense. 
+
+<p align="Center">
+  <u><b> Example output from best model </b></u>
+</p>
+
+<p align="center">
+  <img src="./Images/best output.png" title="best output">
+</p>
 
 
 ## Conclusion and Next Steps
-This was a very interesting project for me and I think Natural Language Processing is a very cool topic that is also very hard to work with. There is a lot you can analyze with text and no 2 NLP projects will be the same because the stop words may be different for each project. Generating new text is a very difficult task and I understood why a yelp-review generator hasn't been made yet. Trying to train a model to understand patterns of text of thousands of different users is incredibly hard because every person has a different writing style so trying to combine all of them and training basic models that I ran will not yield the results one would hope for. This was a valuable experience in the pitfalls of NN and overly ambitious projects that I did not have the tools to properly run.
+This was a very interesting project for me and I think Natural Language Processing is a very cool topic that is also very hard to work with. There is a lot you can analyze with text and no 2 NLP projects will be the same because the stop words may be different for each project. Generating new text is a very difficult task and I understood why a yelp-review generator hasn't been made yet. Trying to train a model to understand patterns of text of thousands of different users is incredibly hard because every person has a different writing style so trying to combine all of them and training basic models that I ran will not yield the results one would hope for. 
 
-Going forward, I would like to see if I can get a more robust model running and see if the output will be something better than a bunch of repeated words. I think there is more that can be done with the markov chain generator I made since the results were promising for such a simple function. I want to make the markov chain look at 2 word combinations and predict the next word or 2 and see if I can get it to generate text at a sentence level. 
+Going forward, I would like to run my more robust model for the all of the other review dataframes I have. I only had time to run it for my smallest dataframe, the 4 star reviews, during my time at Flatiron School. I want to be able to have the generator learn on punctuation so my predictions read more like english rather than an x-length of lower-case words. Obviously, the more complicated I make my model, the better it will read, but running neural networks is very computationally expensive. 
