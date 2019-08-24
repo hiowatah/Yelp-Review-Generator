@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project uses data scraped from Yelp and through natural language processing and neural networks, I have developed a text generator that will create a review post based on the rating you want to give a particular establishment. The goal of this model is to create a template for you which you can tweak slightly and post the review onto your account. This will save you a lot of time as the model has been trained on thousands of reviews for each star rating, allowing this text generator to capture the general sentiment you may be feeling for the star rating you want to provide.
+This project uses data scraped from Yelp and through natural language processing and neural networks, I have developed a text generator that will create a review post based on the rating you want to give a particular establishment. The goal of this model is to create a template for you which you can tweak slightly and post the review onto your account. This will save you a lot of time as the model has been trained on thousands of reviews for each star rating, allowing this text generator to capture the general sentiment you may be feeling for the star rating you want to provide for the restaurant you just visited. This could be very positive for a 5 star or extremely negative for 1 star. The choice is yours!
 
 
 ## Initial EDA
