@@ -150,7 +150,7 @@ As you can see above, the first 5 words are the seed words and the remainder of 
 
 ## Enter Markov Chain
 
-Markov Chain is a stochastic model where the probability of each event depends only on the previous event. To put this relating to text generation, a word is only generated based on the previous word. 
+Markov Chain is a stochastic model where the probability of each event depends only on the previous event. To put this relating to text generation, a word is only generated based on the previous word. This happens by combing through the entirity of my corpus and having a giant list of all of the words that have appeared directly after each unique word. A random word or character is chosen based on probability and the text begins to generate.
 
 To build out this model, I combined all the reviews into one text file and made a dictionary where the keys were the unique words in the file and the values were every single word that occurred directly after the word. So if the word 'happy' appeared three times, the values of this key would be the words that occurred after each instance of 'happy'.
 
