@@ -7,7 +7,7 @@ This project uses data scraped from Yelp and through natural language processing
 
 ## Initial EDA
 
-I wanted to see what types of reviews users found to be funny, cool, and useful. Please see below for the top reviews from my initial scrape.
+I wanted to see what types of reviews users found to be funny, cool, and useful. These reviews can provide additional insight on constructing reviews that users find helpful. Please see below for the top reviews from my initial scrape.
 
 <p align="center">
   <u><b> Funniest and Cool Review </b></u>
